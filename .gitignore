@@ -1,0 +1,111 @@
+ # -------------------------
+# Python cache & artifacts
+# -------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+dist/
+build/
+wheels/
+
+# -------------------------
+# Virtual environments
+# -------------------------
+.env
+.env.*
+.venv/
+venv/
+ENV/
+env/
+
+# -------------------------
+# Tooling (VSCode, PyCharm, etc.)
+# -------------------------
+.vscode/
+.idea/
+
+# -------------------------
+# Jupyter / Dev Notebooks
+# -------------------------
+.ipynb_checkpoints/
+*.ipynb
+
+# -------------------------
+# OS files
+# -------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# Logs / Output
+# -------------------------
+logs/
+*.log
+
+# -------------------------
+# Local data
+# -------------------------
+data/
+data/*
+!data/.keep        # keep empty folder if needed
+
+# -------------------------
+# Temporary files
+# -------------------------
+*.tmp
+*.bak
+*.swp
+
+# -------------------------
+# Cache folders for tools
+# -------------------------
+.cache/
+__cache__/
+.mypy_cache/
+.pytest_cache/
+.hypothesis/
+.tox/
+
+# -------------------------
+# Model checkpoints / embeddings
+# -------------------------
+checkpoints/
+models/
+embeddings/
+vectorstore/
+*.bin
+*.pt
+*.ckpt
+
+# -------------------------
+# Environment & secrets
+# -------------------------
+.env
+.env.*
+*.secret
+*.key
+*.json.key
+
+# -------------------------
+# Coverage
+# -------------------------
+htmlcov/
+.coverage
+coverage.xml
+
+# -------------------------
+# Poetry / Pipenv / Hatch
+# -------------------------
+poetry.lock
+Pipfile.lock
+.hatch/
+
+# -------------------------
+# Docs build
+# -------------------------
+site/
+docs/_build/
