@@ -5,7 +5,6 @@ import json
 import asyncio
 
 
-
 class ToolExecutionError(Exception):
     pass
 
@@ -31,12 +30,21 @@ class Tool:
     def _build_schema(self, func: Callable, name: str, description: str) -> Dict[str, Any]:
         sig = inspect.signature(func)
         params = {}
+        required = []
 
         for pname, p in sig.parameters.items():
+            # Tür tahmini
+            param_type = self._guess_json_type(p.annotation)
+
+            # Zorunlu mu?
+            is_required = p.default == inspect.Parameter.empty
+
             params[pname] = {
-                "type": self._guess_json_type(p.annotation),
+                "type": param_type,
                 "description": f"Parameter {pname}"
             }
+            if is_required:
+                required.append(pname)
 
         return {
             "name": name,
@@ -44,7 +52,7 @@ class Tool:
             "parameters": {
                 "type": "object",
                 "properties": params,
-                "required": list(params.keys()),
+                "required": required, 
             },
         }
 
@@ -169,5 +177,9 @@ def tool(func=None, *, name=None, description=None):
     else:
         return decorator(func)
  
+
+ 
+ 
+
 
  
