@@ -451,3 +451,42 @@ async def main():
 
 
 
+# -----------------------------------------------
+# Multi-Agent setup can be added here if needed
+# -----------------------------------------------
+Codeagent = Agent(
+    model="huggingface:Qwen/Qwen3-Coder-30B-A3B-Instruct:nebius",
+    api_key="hf_xxx",
+    max_tokens=4048,
+    tools=[read_file,...],
+    max_steps=5,
+    temperature=0.6,
+    persistent=True,
+    name="Coding Agent"
+)
+
+Researchagent = Agent(
+    model="openai:gpt-3.5-turbo",
+    api_key="sk-xxx",
+    max_tokens=4048,
+    tools=[write_file,...],
+    max_steps=2,
+    temperature=0.6,
+    persistent=True,
+    name="Researcher Agent"
+)
+
+# Ana orchestrator
+Main = SubAgentOrchestrator(
+    agents=[Codeagent, Researchagent],
+    workspace_dir=".agentforge/shared_workspace"
+)
+
+async def main():
+    query = "Search the internet for the latest advancements about AI Agent and build data agent using crewai library. Save the code and any necessary files."
+    result = await Main.run(query)
+    print("Final Result:\n", result)
+
+# Çalıştır
+import asyncio
+asyncio.run(main())
